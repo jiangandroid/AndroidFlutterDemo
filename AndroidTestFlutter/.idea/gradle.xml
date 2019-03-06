@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="D:/flutter_windows_v1.0.0-stable/flutter/.pub-cache/hosted/pub.flutter-io.cn/hybrid_stack_manager-0.1.1/android" />
+            <option value="D:/flutter_windows_v1.0.0-stable/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-0.4.1/android" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../flutter_module/.android/Flutter" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
