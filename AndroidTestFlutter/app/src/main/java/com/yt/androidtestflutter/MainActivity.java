@@ -1,7 +1,7 @@
 package com.yt.androidtestflutter;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,7 +10,7 @@ import com.taobao.hybridstackmanager.XURLRouter;
 
 import java.util.HashMap;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
