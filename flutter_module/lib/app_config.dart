@@ -12,7 +12,7 @@ class AppConfig {
     Router.sharedInstance().globalKeyForRouter = gHomeItemPageWidgetKey;
     Router.sharedInstance().routerWidgetHandler =
         ({RouterOption routeOption, Key key}) {
-      if (routeOption.url == "hrd://fdemo") {
+      if (routeOption.url == "hipac://fdemo") {
         return new FDemoWidget(routeOption, key: key);
       }
       return null;

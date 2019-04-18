@@ -3,8 +3,10 @@ import 'package:flutter_module/app_config.dart';
 import 'package:flutter_module/my_app.dart';
 import 'package:hybrid_stack_manager/hybrid_stack_manager_plugin.dart';
 import 'HomePage.dart';
+import 'package:flutter_plugin_test/native_plugin.dart';
 
 void main() async {
+  NativePlugin.setupMethodChannel();
   AppConfig.sharedInstance();
   HybridStackManagerPlugin plugin =
       HybridStackManagerPlugin.hybridStackManagerPlugin;

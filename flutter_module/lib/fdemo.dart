@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hybrid_stack_manager/hybrid_stack_manager_plugin.dart';
+import 'package:flutter_plugin_test/flutter_plugin_test.dart';
 
-class FDemoWidget extends StatelessWidget {
+class FDemoWidget extends StatefulWidget {
   RouterOption routeOption;
 
   FDemoWidget(RouterOption option, {Key key}) : super(key: key) {
     routeOption = option;
   }
 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return new FDemoWidgetState(routeOption);
+  }
+}
+
+class FDemoWidgetState extends State<FDemoWidget> {
+  RouterOption routeOption;
+  String _version='不知道';
+
+  FDemoWidgetState(RouterOption option) {
+    routeOption = option;
+  }
+
+  @override
   Widget build(BuildContext context) {
     Map m = Utils.parseUniquePageName(routeOption.userInfo);
     return new Scaffold(
@@ -31,30 +48,36 @@ class FDemoWidget extends StatelessWidget {
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: new Column(
-            // Column is also layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug paint" (press "p" in the console where you ran
-            // "flutter run", or select "Toggle Debug Paint" from the Flutter tool
-            // window in IntelliJ) to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              new Text(_version),
+              new GestureDetector(
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue,
+                  width: 200.0,
+                  height: 100.0,
+                  child: Text(
+                    "Click to open FlutterPage",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                onTap: () => HybridStackManagerPlugin.hybridStackManagerPlugin
+                    .openUrlFromNative(
+                        url: "hipac://fdemo", query: {"flutter": true}), //点击
+//                onDoubleTap: () => updateText("DoubleTap"), //双击
+//                onLongPress: () => updateText("LongPress"), //长按
+              ),
               new RaisedButton(
                 child: new Text(
                   "Click to open FlutterPage",
                   style: TextStyle(color: Colors.black),
                 ),
                 onPressed: () {
+                  print('Click to open FlutterPage');
                   HybridStackManagerPlugin.hybridStackManagerPlugin
                       .openUrlFromNative(
-                          url: "hrd://fdemo", query: {"flutter": true});
+                          url: "hipac://fdemo", query: {"flutter": true});
                 },
               ),
               new RaisedButton(
@@ -64,7 +87,24 @@ class FDemoWidget extends StatelessWidget {
                 ),
                 onPressed: () {
                   HybridStackManagerPlugin.hybridStackManagerPlugin
-                      .openUrlFromNative(url: "hrd://ndemo");
+                      .openUrlFromNative(url: "hipac://ndemo");
+                },
+              ),
+              new RaisedButton(
+                child: new Text(
+                  "getPlatformVersion",
+                  style: TextStyle(color: Colors.black),
+                ),
+                onPressed: () async {
+                  String platformVersion;
+                  try {
+                    platformVersion = await FlutterPluginTest.platformVersion;
+                  } on Exception {
+                    platformVersion = 'Failed to get platform version.';
+                  }
+                  setState(() {
+                    _version = platformVersion;
+                  });
                 },
               )
             ],

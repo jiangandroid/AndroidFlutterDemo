@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 HashMap<String, Object> m = new HashMap<>();
                 m.put("flutter", true);
-                XURLRouter.sharedInstance().openUrlWithQueryAndParams("hrd://fdemo", m, null);
+                XURLRouter.sharedInstance().openUrlWithQueryAndParams("hipac://fdemo", m, null);
             }
         });
         layout.addView(btn);

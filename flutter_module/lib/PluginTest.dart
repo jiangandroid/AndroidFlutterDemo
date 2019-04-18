@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-class FlutterPluginTest {
+class PluginTest {
   static const _channel = const MethodChannel('android.flutter/plugin');
 
   static init() async {
